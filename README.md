@@ -20,7 +20,7 @@ This project proposes a **decentralised electronic device rental system** that:
 - runs on Ethereum without a central authority,
 - manages rental agreements via smart contracts,
 - locks rent and deposit in the contract to protect both parties,
-- records the workflow on-chain for auditability and transparency. :contentReference[oaicite:1]{index=1}
+- records the workflow on-chain for auditability and transparency. 
 
 Example devices include laptops, game consoles, and other consumer electronics.
 
@@ -32,44 +32,43 @@ Example devices include laptops, game consoles, and other consumer electronics.
 
 - Register rentable electronic devices on-chain (model, acquisition year, daily rent, required deposit, owner address).
 - Approve completion of the tenancy and set deposit deductions.
-- Approve or reject cancellation requests from renters. :contentReference[oaicite:2]{index=2}
+- Approve or reject cancellation requests from renters. 
 
 **For renters**
 
 - Browse listed devices and view non-sensitive information via the web UI.
 - Specify lease term and initiate a rental by paying rent + deposit to the smart contract.
 - Complete the tenancy and receive deposit (minus any approved deduction) back from the contract.
-- Request cancellation if the device cannot be accessed/used, and get a refund when approved. :contentReference[oaicite:3]{index=3}
+- Request cancellation if the device cannot be accessed/used, and get a refund when approved. 
 
 **System behaviour**
 
 - Rent and deposit are sent from the renter to the contract at the start of tenancy.
 - During tenancy, neither party can directly access the locked funds.
 - On successful completion, the owner receives total rent and the renter gets remaining deposit.
-- On approved cancellation, the renter receives a full refund. :contentReference[oaicite:4]{index=4}
+- On approved cancellation, the renter receives a full refund. 
 
 ---
 
 ## 🧱 Architecture & Components
 
-The application follows a typical Ethereum DApp architecture: :contentReference[oaicite:5]{index=5}
+The application follows a typical Ethereum DApp architecture: 
 
 - **Smart contracts (Solidity)**  
   - Main rental contract implementing the business logic.
-  - A Solidity library (`DeviceLib`) defining the device data structure and related fields (model, year, rent, deposit, availability flags, etc.). :contentReference[oaicite:6]{index=6}  
+  - A Solidity library (`DeviceLib`) defining the device data structure and related fields (model, year, rent, deposit, availability flags, etc.). 
 
 - **External scripts (JavaScript + Web3.js)**  
   - Handle interactions between the web UI and the smart contracts.
-  - Implement application logic such as starting a tenancy, computing total payment, and sending transactions with appropriate value/gas. :contentReference[oaicite:7]{index=7}  
-
+  - Implement application logic such as starting a tenancy, computing total payment, and sending transactions with appropriate value/gas. 
 - **User interface (HTML/CSS/JS)**  
   - Single-page web application that:
     - provides a form to add devices,
     - shows device cards with current status,
-    - exposes buttons for rent / return / cancel actions, and owner approvals. :contentReference[oaicite:8]{index=8}  
+    - exposes buttons for rent / return / cancel actions, and owner approvals.  
 
 - **Ethereum tooling**
-  - **Truffle** – development framework (compile, migrate, test). :contentReference[oaicite:9]{index=9}  
+  - **Truffle** – development framework (compile, migrate, test). 
   - **Ganache** – local Ethereum testnet for development and testing.
   - **MetaMask** – browser extension wallet for sending transactions.
   - **npm + lite-server / BrowserSync** – lightweight dev server with live reload.
