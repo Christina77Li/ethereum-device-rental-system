@@ -1,0 +1,26 @@
+[
+  {
+    "make": "NS",
+    "picture": "images/ns.jpg",
+    "isAvailable": false,
+    "rentee":"0x7F095f68F984E4F83854aFa4CC3B23B54868294A",
+    "owner":  "0x7F095f68F984E4F83854aFa4CC3B23B54868294A",
+    "year": 2018,
+	"fee": 1,
+	"deposit": 5,
+	"leaseterm": 3,
+    "deviceId": 0
+  },
+    {
+    "make": "PS4",
+    "picture": "images/ps4.jpg",
+    "isAvailable": true,
+    "rentee":"0x0000000000000000000000000000000000000000",
+    "owner":  "0x7F095f68F984E4F83854aFa4CC3B23B54868294A",
+    "year": 2017,
+    "fee": 2,
+	"deposit": 7,
+	"leaseterm": 0,
+    "deviceId": 1
+  }
+]
