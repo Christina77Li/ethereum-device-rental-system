@@ -5,6 +5,11 @@ It was originally developed as my MSc Computer Science dissertation project, *�
 
 The goal is to show how blockchain and smart contracts can improve traditional rental systems by reducing dependence on intermediaries, increasing transparency, and providing secure, trustless payments between owners and renters.
 
+## 🎥 Demo
+
+A demo video of the application is available here:  
+[Demo video (One Drive)](https://1drv.ms/v/c/d64c9cb957077188/IQBF0pXtjFDPTLNU14_2N_NaATT88Cd8k5hfDe_x9I6bLlI?e=jJA7mA)
+
 ---
 
 ## 🎯 Project Overview
