@@ -1,3 +1,8 @@
+// app.js
+// Front-end logic for a decentralized electronic device rental DApp.
+// - Loads device metadata from devices.json for initial display
+// - Connects to Ethereum via MetaMask or Ganache
+// - Interacts with the Rental smart contract to add devices, rent, and return them
 App = {
   web3Provider: null,
   contracts: {},
@@ -24,6 +29,9 @@ App = {
     return App.initWeb3();
   },
 
+  // Initialize Web3:
+  // - Try MetaMask (window.ethereum / window.web3)
+  // - Fallback to local Ganache at http://localhost:7545
   initWeb3: async function() {
 
     //if (typeof web3 !== 'undefined') {
@@ -52,6 +60,7 @@ App = {
     return App.initContract();
   },
 
+  // Load Rental contract
   initContract: function() {
     $.getJSON('Rental.json', function(data) {
       // Get the necessary contract artifact file and instantiate it with truffle-contract
@@ -96,15 +105,14 @@ App = {
       for (i = 0; i < count; i ++) {
         App.getDeviceInfo(rentalInstance,i).then(function(info) {
 
-            var owner = info[3];
-
-            var make = info[0];
+            
+            var model = info[0];
             var isAvailable = info[1];
             deviceTemplate.find('.panel-title').text(model);
-            deviceTemplate.find('.device-make').text(model);
+            deviceTemplate.find('.device-model').text(model);
             deviceTemplate.find('.device-isAvailable').text(info[1]);
             deviceTemplate.find('.device-year').text(info[4]);
-            deviceTemplate.find('.device-dailrent').text(info[5]);
+            deviceTemplate.find('.device-dailyrent').text(info[5]);
             deviceTemplate.find('.device-deposit').text(info[6]);
             deviceTemplate.find('.device-leaseterm').text(info[7]);
             deviceTemplate.find('.btn-rent').attr('data-id', info[8]);
@@ -156,7 +164,7 @@ App = {
           var dailyrent =  Number(info[5]);
           var _deposit = Number(info[6]);
           var totalpayment = (dailyrent* rentday) + _deposit;
-          
+          var owner = info[3];
           console.info("Owner: "+owner+"__dailyrent: "+info[5]+"__leaseterm: "+rentday+"__totalpayments: "+totalpayment+"__leasee: "+account)
           
           return rentalInstance.rent(deviceId, rentday, {from: account, value: web3.toWei(totalpayment,'ether'), gas:3000000});
